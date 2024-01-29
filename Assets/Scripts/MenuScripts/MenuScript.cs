@@ -6,32 +6,26 @@ using UnityEngine.UI;
 public class MenuScript : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI casinoBalanceText;
-    [SerializeField] private TextMeshProUGUI playerBalanceText;
     [SerializeField] private TextMeshProUGUI informationText;
     [SerializeField] private Button buyButton;
     [SerializeField] private Button startButton;
 
     private int casinoBalance;
-    private int playerBalance;
 
     private bool isBuySkin;
 
     private void Awake()
     {
-        if (!PlayerPrefs.HasKey("PlayerCoins")) playerBalance = 1000;
-        else playerBalance = PlayerPrefs.GetInt("PlayerCoins");
-
         if (!PlayerPrefs.HasKey("CasinoCoins")) casinoBalance = 1000;
         else casinoBalance = PlayerPrefs.GetInt("CasinoCoins");
 
         if (!PlayerPrefs.HasKey("PixelSkin")) isBuySkin = false;
-        else isBuySkin = true; 
+        else isBuySkin = true;
     }
 
     private void Start()
     {
-        casinoBalanceText.text = "Casino Balance: " + casinoBalance;
-        playerBalanceText.text = "Player Balance: " + playerBalance;
+        casinoBalanceText.text = "" + casinoBalance;
 
         if (isBuySkin == true) 
         {
